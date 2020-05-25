@@ -1,0 +1,31 @@
+<p>
+calculations works!
+</p>
+
+<ul class="Calculation">
+  <li *ngFor="let calculation of activeCalculation" >
+    <span class="badge">C-> {{calculation.Id}}</span> {{calculation.Name}}
+
+    <br />
+          R-> {{calculation.Root.Name}}
+    
+    <div *ngFor="let item of calculation.Root.Items" >
+      <ul>
+        E -> {{item.Name}}
+
+        <div *ngFor="let post of item.Items2">
+          <ul>P -> {{post.Name}}</ul>
+           <div *ngFor="let post2 of post.Items3">
+              <ul>->   RES -> {{post2.Name}}</ul>
+           </div>
+
+
+        </div>
+      </ul>
+
+
+
+    </div>
+
+  </li>
+</ul>
