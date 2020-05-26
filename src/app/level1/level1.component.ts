@@ -22,47 +22,64 @@ import { GridDataResult, GridComponent, PageChangeEvent, RowClassArgs } from '@p
           [rowClass]="rowCallback"
           [resizable]="true"
           >
-          <kendo-grid-column field="Target.Name" title="1Name" width="120"  
-            [headerStyle]="{'background-color': '#666','color': '#fff','line-height': '1em'}"
-            [class]="{'codeColumn': true}">
-          </kendo-grid-column>
-          
-          <kendo-grid-column field="Target.ID" title="Product ID" 
-            width="120"
+          <kendo-grid-column field="Target.Number" title="Number" width="120"
             [class]="{'codeColumn': true}">
           </kendo-grid-column>
 
-          <kendo-grid-column field="Target.ItemType" title="Item type" 
+           <kendo-grid-column field="Target.Code" title="Code" width="120"  
+            [class]="{'codeColumn': true}">
+          </kendo-grid-column>
+
+<!--[headerStyle]="{'background-color': '#666','color': '#fff','line-height': '1em'}" -->
+          <kendo-grid-column field="Target.Name" title="Name" width="120"  
+            [class]="{'codeColumn': true}">
+          </kendo-grid-column>
+
+          <!--<kendo-grid-column field="Target.ItemType" title="Item type" 
             width="120"  
             [class]="{'codeColumn': true}">
+          </kendo-grid-column>-->
+
+          <kendo-grid-column field="Quantity" title="Quantity" width="120" 
+            [class]="{'codeColumn': true}"> 
           </kendo-grid-column>
 
-          <kendo-grid-column field="FullCost" title="FullCost" width="120"  
-          [class]="{'codeColumn': true}">
-          ></kendo-grid-column>
-          
-          <kendo-grid-column field="SalesPrice" title="SalesPrice" width="120"  
-          [class]="{'codeColumn': true}">
-          ></kendo-grid-column>
-          
-          <kendo-grid-column field="Consumption" title="Consumption" width="120"  
-          [class]="{'codeColumn': true}">
-          ></kendo-grid-column>
-          
+          <kendo-grid-column field="Target.Dimension" title="Dimension" width="120" 
+            [class]="{'codeColumn': true}"> 
+          </kendo-grid-column>
+
           <kendo-grid-column field="TimeConsumption" title="TimeConsumption" width="120" 
-          [class]="{'codeColumn': true}"> 
+            [class]="{'codeColumn': true}"> 
+          </kendo-grid-column>
           
+          <kendo-grid-column field="UnitTimeConsumption" title="UnitTimeConsumption" width="120"  
+            [class]="{'codeColumn': true}">
           ></kendo-grid-column>
           
-          <kendo-grid-column field="Rate" title="Rate" width="120"  
-          [class]="{'codeColumn': true}">
-          ></kendo-grid-column>
+          <kendo-grid-column field="UnitFullCost" title="UnitFullCost" width="120"  
+            [class]="{'codeColumn': true}">
+          </kendo-grid-column>
+
+          <kendo-grid-column field="UnitSalesPrice" title="UnitSalesPrice" width="120"  
+            [class]="{'codeColumn': true}">
+          </kendo-grid-column>
+          
+          <kendo-grid-column field="TimeConsumption" title="TimeConsumption"  
+            width="120" 
+            [class]="{'codeColumn': true}"> 
+          </kendo-grid-column>
+          
+          <kendo-grid-column field="FullCost" title="FullCost" width="120"  
+            [class]="{'codeColumn': true}">
+          </kendo-grid-column>
+
+          <kendo-grid-column field="SalesPrice" title="SalesPrice" width="120"  
+            [class]="{'codeColumn': true}">
+          </kendo-grid-column>
 
           <ng-template  kendoGridDetailTemplate let-dataItem1>
             <app-level2 [item2]="dataItem1.Target.OutEdges"></app-level2>
           </ng-template>
-
-      
 
         </kendo-grid>
 
