@@ -21,12 +21,11 @@ import { Observable } from 'rxjs';
           [kendoGridBinding]="item3"
           [resizable]="true"
           [reorderable]="true"
-          [columnMenu]="{ columnChooser: true }"
-          [filterable]="true"
+          [columnMenu]="{ filter: true }"
           [sortable]="true"
-          [rowClass]="rowCallback"
+         
           >
-          <kendo-grid-column field="Target.Name" title="1Name" width="120" [style]="{'background-color': green,'color': '#aaa'}"></kendo-grid-column>
+          <kendo-grid-column field="Target.Name" title="Name" width="120" [style]="{'background-color': green,'color': '#aaa'}"></kendo-grid-column>
           <kendo-grid-column field="Target.ID" title="Product ID" width="120"></kendo-grid-column>
           <kendo-grid-column field="Target.ItemType" title="Item type" width="120"></kendo-grid-column>
           <kendo-grid-column field="FullCost" title="FullCost" width="120"  [style]="{'background-color': '#e2e8ee','color': '#aaa'}"></kendo-grid-column>

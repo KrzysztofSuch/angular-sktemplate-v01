@@ -20,8 +20,8 @@ import { GridDataResult, GridComponent, PageChangeEvent, RowClassArgs } from '@p
           [rowClass]="rowCallback"
           [resizable]="true"
           [reorderable]="true"
-          [columnMenu]="{ columnChooser: true }"
-          [filterable]="true"
+          [columnMenu]="{ filter: true }"
+          
           [sortable]="true"
           >
           <kendo-grid-column field="Target.Number" title="Number" width="120"

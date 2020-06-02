@@ -15,8 +15,7 @@ import { Observable } from 'rxjs';
           [kendoGridBinding]="item2"
           [resizable]="true"
           [reorderable]="true"
-          [columnMenu]="{ columnChooser: true }"
-          [filterable]="true"
+          [columnMenu]="{ filter: true }"
           [sortable]="true"
           [rowClass]="rowCallback"
           >
