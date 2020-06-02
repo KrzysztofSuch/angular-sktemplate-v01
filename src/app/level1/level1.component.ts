@@ -13,14 +13,16 @@ import { GridDataResult, GridComponent, PageChangeEvent, RowClassArgs } from '@p
   template: `
        <!-- <p style="color: green">level1 \\/ </p> 
        <p> 1 => {{item.Name}} </p>-->
-    
-        
 
         <kendo-grid
           #grid
-          [data]="item.OutEdges"
+          [kendoGridBinding]="item.OutEdges"
           [rowClass]="rowCallback"
           [resizable]="true"
+          [reorderable]="true"
+          [columnMenu]="{ columnChooser: true }"
+          [filterable]="true"
+          [sortable]="true"
           >
           <kendo-grid-column field="Target.Number" title="Number" width="120"
             [class]="{'codeColumn': true}">

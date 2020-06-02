@@ -15,9 +15,10 @@ import { Level3Component } from './level3/level3.component';
 import { Level4Component } from './level4/level4.component';
 import { Level1Component } from './level1/level1.component';
 import { CalculationComponent } from './calculation/calculation.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, GridModule],
+  imports:      [ BrowserModule, FormsModule, GridModule, BrowserAnimationsModule],
   declarations: [ AppComponent, HelloComponent, HeroesComponent, CalculationsComponent, TableComponent, Level2Component, Level3Component, Level4Component, Level1Component, CalculationComponent ],
   bootstrap:    [ AppComponent ],
   providers: [HeroService, CalculationService]
