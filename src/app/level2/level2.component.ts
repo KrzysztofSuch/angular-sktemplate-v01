@@ -12,8 +12,13 @@ import { Observable } from 'rxjs';
 
 
       <kendo-grid
-          [data]="item2"
+          [kendoGridBinding]="item2"
           [resizable]="true"
+          [reorderable]="true"
+          [columnMenu]="{ columnChooser: true }"
+          [filterable]="true"
+          [sortable]="true"
+          [rowClass]="rowCallback"
           >
           <kendo-grid-column field="Target.Name" title="Name" width="120" 
           [class]="{'codeColumn': true}">

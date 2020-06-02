@@ -18,8 +18,13 @@ import { Observable } from 'rxjs';
 -->
 
       <kendo-grid
-          [data]="item3"
-        
+          [kendoGridBinding]="item3"
+          [resizable]="true"
+          [reorderable]="true"
+          [columnMenu]="{ columnChooser: true }"
+          [filterable]="true"
+          [sortable]="true"
+          [rowClass]="rowCallback"
           >
           <kendo-grid-column field="Target.Name" title="1Name" width="120" [style]="{'background-color': green,'color': '#aaa'}"></kendo-grid-column>
           <kendo-grid-column field="Target.ID" title="Product ID" width="120"></kendo-grid-column>

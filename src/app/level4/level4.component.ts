@@ -15,8 +15,13 @@ import { Iitem, Iitem4 } from '../iitem';
       <p>level4 /\\ </p> -->
 
       <kendo-grid
-          [data]="item4"
-        
+          [kendoGridBinding]="item4"
+          [resizable]="true"
+          [reorderable]="true"
+          [columnMenu]="{ columnChooser: true }"
+          [filterable]="true"
+          [sortable]="true"
+          [rowClass]="rowCallback"
           >
           <kendo-grid-column field="Target.Name" title="1Name" width="120" [style]="{'background-color': green,'color': '#aaa'}"></kendo-grid-column>
           <kendo-grid-column field="Target.ID" title="Product ID" width="120"></kendo-grid-column>
