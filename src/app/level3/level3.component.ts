@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Iitem } from '../iitem';
 import { Observable } from 'rxjs';
+import { RowClassArgs } from '@progress/kendo-angular-grid';
 
 @Component({
   selector: 'app-level3',
@@ -23,7 +24,8 @@ import { Observable } from 'rxjs';
           [reorderable]="true"
           [columnMenu]="{ filter: true }"
           [sortable]="true"
-         
+          [rowClass]="rowCallback"
+          >
           >
           <kendo-grid-column field="Target.Name" title="Name" width="120" [style]="{'background-color': green,'color': '#aaa'}"></kendo-grid-column>
           <kendo-grid-column field="Target.ID" title="Product ID" width="120"></kendo-grid-column>
@@ -52,6 +54,24 @@ export class Level3Component implements OnInit {
 
   ngOnInit() {
   }
+
+
+  public rowCallback = (context: RowClassArgs) => {
+    switch (context.dataItem.Target.ItemType) {
+      case 'G':
+        return {GroupColor : true};
+      case 'E':
+        return {ElementColor : true};
+      case 'P':
+        return {PostColor : true};
+      case 'R':
+        return {ResourceColor : true};
+      case 'D':
+        return {DescriptionColor : true};
+      default:
+        return {};
+     }
+   }
 
 }
 
