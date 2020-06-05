@@ -3,6 +3,8 @@ import { Iitem }  from '../iitem'
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { GridDataResult, GridComponent, PageChangeEvent, RowClassArgs } from '@progress/kendo-angular-grid';
+import { GridSettings } from '../grid-settings.interface';
+import { ColumnSettings } from '../column-settings.interface';
 
 @Component({
   selector: 'app-level1',
@@ -144,6 +146,54 @@ export class Level1Component implements OnInit , AfterViewInit {
      }
    }
 
+
+  public get savedStateExists(): boolean {
+    return !!this.persistingService.get('gridSettings');
+  }
+
+  public dataStateChange(state: State): void {
+      this.gridSettings.state = state;
+      this.gridSettings.gridData = process(sampleProducts, state);
+  }
+
+  public saveGridSettings(grid: GridComponent): void {
+    const columns = grid.columns;
+
+    const gridConfig = {
+      state: this.gridSettings.state,
+      columnsConfig: columns.toArray().map(item => {
+        return Object.keys(item)
+          .filter(propName => !propName.toLowerCase()
+            .includes('template'))
+            .reduce((acc, curr) => ({...acc, ...{[curr]: item[curr]}}), <ColumnSettings> {});
+      })
+    };
+
+    this.persistingService.set('gridSettings', gridConfig);
+  }
+
+  public mapGridSettings(gridSettings: GridSettings): GridSettings {
+    const state = gridSettings.state;
+    this.mapDateFilter(state.filter);
+
+    return {
+      state,
+      columnsConfig: gridSettings.columnsConfig.sort((a, b) => a.orderIndex - b.orderIndex),
+      gridData: process(sampleProducts, state)
+    };
+  }
+
+  private mapDateFilter = (descriptor: any) => {
+    const filters = descriptor.filters || [];
+
+    filters.forEach(filter => {
+        if (filter.filters) {
+            this.mapDateFilter(filter);
+        } else if (filter.field === 'FirstOrderedOn' && filter.value) {
+            filter.value = new Date(filter.value);
+        }
+    });
+  }
 }
 
 
