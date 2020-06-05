@@ -5,6 +5,8 @@ import { take } from 'rxjs/operators';
 import { GridDataResult, GridComponent, PageChangeEvent, RowClassArgs } from '@progress/kendo-angular-grid';
 import { GridSettings } from '../grid-settings.interface';
 import { ColumnSettings } from '../column-settings.interface';
+import { StatePersistingService } from '../state-persisting.service';
+import { State, process } from '@progress/kendo-data-query';
 
 @Component({
   selector: 'app-level1',
@@ -34,7 +36,7 @@ import { ColumnSettings } from '../column-settings.interface';
             [class]="{'codeColumn': true}">
           </kendo-grid-column>
 
-<!--[headerStyle]="{'background-color': '#666','color': '#fff','line-height': '1em'}" -->
+          <!--[headerStyle]="{'background-color': '#666','color': '#fff','line-height': '1em'}" -->
           <kendo-grid-column field="Target.Name" title="Name" width="120"  
             [class]="{'codeColumn': true}">
           </kendo-grid-column>
@@ -86,16 +88,6 @@ import { ColumnSettings } from '../column-settings.interface';
           </ng-template>
 
         </kendo-grid>
-
-
-    
-<!--
-      <div *ngFor="let i of item.Items">
-        <app-level2 [item2]="i"></app-level2>
-      </div>
-
-      <p>level1 /\\ </p>
-      -->
   `
 })
 export class Level1Component implements OnInit , AfterViewInit {
@@ -122,7 +114,7 @@ export class Level1Component implements OnInit , AfterViewInit {
   
   @Input() public item: Observable<Iitem>;
 
-  constructor(private ngZone: NgZone) {
+  constructor(private ngZone: NgZone, public persistingService: StatePersistingService) {
     }
 
   ngOnInit() {
@@ -146,6 +138,7 @@ export class Level1Component implements OnInit , AfterViewInit {
      }
    }
 
+  public gridSettings: GridSettings;
 
   public get savedStateExists(): boolean {
     return !!this.persistingService.get('gridSettings');
@@ -153,7 +146,7 @@ export class Level1Component implements OnInit , AfterViewInit {
 
   public dataStateChange(state: State): void {
       this.gridSettings.state = state;
-      this.gridSettings.gridData = process(sampleProducts, state);
+     // this.gridSettings.gridData = process(sampleProducts, state);
   }
 
   public saveGridSettings(grid: GridComponent): void {
@@ -179,7 +172,7 @@ export class Level1Component implements OnInit , AfterViewInit {
     return {
       state,
       columnsConfig: gridSettings.columnsConfig.sort((a, b) => a.orderIndex - b.orderIndex),
-      gridData: process(sampleProducts, state)
+      //gridData: process(sampleProducts, state)
     };
   }
 
