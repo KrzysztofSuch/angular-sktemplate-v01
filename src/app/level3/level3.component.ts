@@ -23,7 +23,7 @@ import { RowClassArgs, GridComponent } from '@progress/kendo-angular-grid';
           <kendo-grid-column field="Consumption" title="Consumption" width="120"  [class]="{'codeColumn': true}"></kendo-grid-column>
           <kendo-grid-column field="TimeConsumption" title="TimeConsumption" width="120"   [class]="{'codeColumn': true}"></kendo-grid-column>
           <kendo-grid-column field="Rate" title="Rate" width="120"  [class]="{'codeColumn': true}"></kendo-grid-column>
-          <ng-template kendoGridDetailTemplate let-dataItem3>
+          <ng-template kendoGridDetailTemplate let-dataItem3 [kendoGridDetailTemplateShowIf]="showUnderLevel">
             <app-level4 [item4]="dataItem3.Target.OutEdges"></app-level4>
           </ng-template>
 
@@ -58,6 +58,9 @@ export class Level3Component implements OnInit {
      }
    }
 
+  showUnderLevel(dataItem3: any) : boolean {
+    return dataItem3.Target.OutEdges.length > 0;
+  }
 }
 
 

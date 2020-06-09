@@ -84,7 +84,7 @@ import { State, process } from '@progress/kendo-data-query';
             [class]="{'codeColumn': true}">
           </kendo-grid-column>
 
-          <ng-template  kendoGridDetailTemplate let-dataItem1>
+          <ng-template kendoGridDetailTemplate let-dataItem1 [kendoGridDetailTemplateShowIf]="showUnderLevel">
             <app-level2 [item2]="dataItem1.Target.OutEdges"></app-level2>
           </ng-template>
 
@@ -139,7 +139,18 @@ export class Level1Component implements OnInit , AfterViewInit {
      }
    }
 
-
+  showUnderLevel(dataItem: any) : boolean {
+    let condition: boolean = false;
+    try{
+       
+       condition = dataItem.Target.OutEdges.length > 0;
+        return condition;
+    }
+    catch(error){
+        return false;
+    }
+   
+  }
 
 
 
@@ -147,7 +158,7 @@ export class Level1Component implements OnInit , AfterViewInit {
   public gridSettings: GridSettings;
 
   public get savedStateExists(): boolean {
-    return !!this.persistingService.get('gridSettings');
+    return !!this.persistingService.get('gridSettingsLvl1');
   }
 
   public dataStateChange(state: State): void {
@@ -168,7 +179,7 @@ export class Level1Component implements OnInit , AfterViewInit {
       })
     };
 
-    this.persistingService.set('gridSettings', gridConfig);
+    this.persistingService.set('gridSettingsLvl1', gridConfig);
   }
 
   public mapGridSettings(gridSettings: GridSettings): GridSettings {
