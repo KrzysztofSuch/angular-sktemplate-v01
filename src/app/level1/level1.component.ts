@@ -109,11 +109,10 @@ export class Level1Component implements OnInit , AfterViewInit {
   } 
 
   @ViewChild(GridComponent) grid: GridComponent;
-  
   @Input() public item: Observable<Iitem>;
 
   constructor(private ngZone: NgZone, public persistingService: StatePersistingService) {
-    }
+  }
 
   ngOnInit() {
   }
@@ -137,6 +136,16 @@ export class Level1Component implements OnInit , AfterViewInit {
    }
 
   showUnderLevel(dataItem: any) : boolean {
+    if( dataItem == 'undefined')
+       return false;
+
+        if( dataItem.Target == 'undefined')
+       return false;
+
+        if( dataItem.Target.OutEdges == 'undefined')
+       return false;
+
+
     let condition: boolean = false;
     try{
        
