@@ -81,8 +81,8 @@ import { State, process } from '@progress/kendo-data-query';
             [class]="{'codeColumn': true}">
           </kendo-grid-column>
 
-          <ng-template kendoGridDetailTemplate let-dataItem1 [kendoGridDetailTemplateShowIf]="showUnderLevel">
-            <app-level2 [item2]="dataItem1.Target.OutEdges"></app-level2>
+          <ng-template kendoGridDetailTemplate let-dataItem1  >
+            <app-level2  [item2]="dataItem1.Target.OutEdges"></app-level2>
           </ng-template>
 
         </kendo-grid>
@@ -136,6 +136,8 @@ export class Level1Component implements OnInit , AfterViewInit {
    }
 
   showUnderLevel(dataItem: any) : boolean {
+    return true;
+
     if( dataItem == 'undefined')
        return false;
 
@@ -145,12 +147,12 @@ export class Level1Component implements OnInit , AfterViewInit {
         if( dataItem.Target.OutEdges == 'undefined')
        return false;
 
-
     let condition: boolean = false;
     try{
        
-       condition = dataItem.Target.OutEdges.length > 0;
-        return condition;
+      //  condition = dataItem.Target.OutEdges.length > 0;
+        // return condition;
+        return true;
     }
     catch(error){
         return false;
