@@ -139,6 +139,11 @@ export class Level1Component implements OnInit , AfterViewInit {
      }
    }
 
+
+
+
+
+//REMEMBER GRID ColumnSettings
   public gridSettings: GridSettings;
 
   public get savedStateExists(): boolean {

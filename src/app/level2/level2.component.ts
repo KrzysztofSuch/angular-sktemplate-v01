@@ -6,11 +6,6 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-level2',
   template: `
-      <!--<p style="color: red">level2 \\/ </p>
-
-      2 ==> {{item2.Name}} -->
-
-
       <kendo-grid
           [kendoGridBinding]="item2"
           [resizable]="true"
@@ -55,18 +50,7 @@ import { Observable } from 'rxjs';
             <app-level3 [item3]="dataItem2.Target.OutEdges"></app-level3>
           </ng-template>
 
-
         </kendo-grid>
-    
-
-<!--      
-      <div *ngFor="let ii of item2.Items3">
-          <ul>P -> {{ii.Name}}</ul>
-          <app-level3 item3="ii"></app-level3>
-        </div>
-      
-
-      <p>level2 /\\ </p> -->
   `
 })
 export class Level2Component implements OnInit {// , AfterViewInit {
