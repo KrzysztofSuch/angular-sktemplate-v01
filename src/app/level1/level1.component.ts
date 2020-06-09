@@ -11,6 +11,7 @@ import { State, process } from '@progress/kendo-data-query';
 @Component({
   selector: 'app-level1',
   encapsulation: ViewEncapsulation.None,
+  providers: [StatePersistingService],
   styles: [`
      
    `],
