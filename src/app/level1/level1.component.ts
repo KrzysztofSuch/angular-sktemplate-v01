@@ -16,9 +16,6 @@ import { State, process } from '@progress/kendo-data-query';
      
    `],
   template: `
-       <!-- <p style="color: green">level1 \\/ </p> 
-       <p> 1 => {{item.Name}} </p>-->
-
         <kendo-grid
           #grid
           [kendoGridBinding]="item.OutEdges"
@@ -29,58 +26,58 @@ import { State, process } from '@progress/kendo-data-query';
           
           [sortable]="true"
           >
-          <kendo-grid-column field="Target.Number" title="Number" width="120"
+          <kendo-grid-column field="Target.Number" title="Number" 
             [class]="{'codeColumn': true}">
           </kendo-grid-column>
 
-           <kendo-grid-column field="Target.Code" title="Code" width="120"  
+           <kendo-grid-column field="Target.Code" title="Code"   
             [class]="{'codeColumn': true}">
           </kendo-grid-column>
 
           <!--[headerStyle]="{'background-color': '#666','color': '#fff','line-height': '1em'}" -->
-          <kendo-grid-column field="Target.Name" title="Name" width="120"  
+          <kendo-grid-column field="Target.Name" title="Name"   
             [class]="{'codeColumn': true}">
           </kendo-grid-column>
 
           <!--<kendo-grid-column field="Target.ItemType" title="Item type" 
-            width="120"  
+              
             [class]="{'codeColumn': true}">
           </kendo-grid-column>-->
 
-          <kendo-grid-column field="Quantity" title="Quantity" width="120" 
+          <kendo-grid-column field="Quantity" title="Quantity"  
             [class]="{'codeColumn': true}"> 
           </kendo-grid-column>
 
-          <kendo-grid-column field="Target.Dimension" title="Dimension" width="120" 
+          <kendo-grid-column field="Target.Dimension" title="Dimension"  
             [class]="{'codeColumn': true}"> 
           </kendo-grid-column>
 
-          <kendo-grid-column field="TimeConsumption" title="TimeConsumption" width="120" 
+          <kendo-grid-column field="TimeConsumption" title="TimeConsumption"  
             [class]="{'codeColumn': true}"> 
           </kendo-grid-column>
           
-          <kendo-grid-column field="UnitTimeConsumption" title="UnitTimeConsumption" width="120"  
+          <kendo-grid-column field="UnitTimeConsumption" title="UnitTimeConsumption"   
             [class]="{'codeColumn': true}">
           ></kendo-grid-column>
           
-          <kendo-grid-column field="UnitFullCost" title="UnitFullCost" width="120"  
+          <kendo-grid-column field="UnitFullCost" title="UnitFullCost"   
             [class]="{'codeColumn': true}">
           </kendo-grid-column>
 
-          <kendo-grid-column field="UnitSalesPrice" title="UnitSalesPrice" width="120"  
+          <kendo-grid-column field="UnitSalesPrice" title="UnitSalesPrice"   
             [class]="{'codeColumn': true}">
           </kendo-grid-column>
           
           <kendo-grid-column field="TimeConsumption" title="TimeConsumption"  
-            width="120" 
+             
             [class]="{'codeColumn': true}"> 
           </kendo-grid-column>
           
-          <kendo-grid-column field="FullCost" title="FullCost" width="120"  
+          <kendo-grid-column field="FullCost" title="FullCost"   
             [class]="{'codeColumn': true}">
           </kendo-grid-column>
 
-          <kendo-grid-column field="SalesPrice" title="SalesPrice" width="120"  
+          <kendo-grid-column field="SalesPrice" title="SalesPrice"   
             [class]="{'codeColumn': true}">
           </kendo-grid-column>
 
