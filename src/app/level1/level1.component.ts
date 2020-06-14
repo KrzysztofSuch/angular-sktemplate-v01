@@ -12,9 +12,7 @@ import { State, process } from '@progress/kendo-data-query';
   selector: 'app-level1',
   encapsulation: ViewEncapsulation.None,
   providers: [StatePersistingService],
-  styles: [`
-     
-   `],
+  styles: [``],
   template: `
         <kendo-grid
           #grid
@@ -81,13 +79,18 @@ import { State, process } from '@progress/kendo-data-query';
             [class]="{'codeColumn': true}">
           </kendo-grid-column>
 
-          <ng-template kendoGridDetailTemplate let-dataItem1  >
-            <app-level2  [item2]="dataItem1.Target.OutEdges"></app-level2>
+          
+          <ng-template kendoGridDetailTemplate let-dataItem1 [kendoGridDetailTemplateShowIf]="showUnderLevel">
+            <div *ngIf="dataItem1.Target.OutEdges">
+              <app-level2 [item2]="dataItem1.Target.OutEdges"></app-level2>
+            </div>
           </ng-template>
 
         </kendo-grid>
   `
 })
+
+// <ng-template kendoGridDetailTemplate let-dataItem1 kendoGridDetailTemplateShowIf="showUnderLevel" >
 export class Level1Component implements OnInit , AfterViewInit {
 //  public pageSize = 10;
 
@@ -135,29 +138,22 @@ export class Level1Component implements OnInit , AfterViewInit {
      }
    }
 
-  showUnderLevel(dataItem: any) : boolean {
-    return true;
-
-    if( dataItem == 'undefined')
+  showUnderLevel(dataItem: any, index: number) : boolean {
+    if( dataItem == null)
        return false;
 
-        if( dataItem.Target == 'undefined')
+    if( dataItem.Target == null)
        return false;
 
-        if( dataItem.Target.OutEdges == 'undefined')
+    if( dataItem.Target.OutEdges == null)
        return false;
 
-    let condition: boolean = false;
     try{
-       
-      //  condition = dataItem.Target.OutEdges.length > 0;
-        // return condition;
-        return true;
+        return dataItem.Target.OutEdges.length > 0;
     }
     catch(error){
         return false;
     }
-   
   }
 
 

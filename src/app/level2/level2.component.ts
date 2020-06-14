@@ -47,6 +47,7 @@ import { Observable } from 'rxjs';
           </kendo-grid-column>
           
           <ng-template kendoGridDetailTemplate let-dataItem2 [kendoGridDetailTemplateShowIf]="showUnderLevel">
+          
             <app-level3 [item3]="dataItem2.Target.OutEdges"></app-level3>
           </ng-template>
 
@@ -98,6 +99,7 @@ export class Level2Component implements OnInit {// , AfterViewInit {
     if(dataItem2.Target.OutEdges == "undefined")
       return false;
 
-    return dataItem2.Target.OutEdges.length > 0;
+    //return dataItem2.Target.OutEdges.length > 0;
+    return true;
   }
 }
