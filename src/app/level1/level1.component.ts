@@ -14,6 +14,12 @@ import { State, process } from '@progress/kendo-data-query';
   providers: [StatePersistingService],
   styles: [``],
   template: `
+       <!-- <button class="k-button" (click)="saveGridSettings(grid)">Save current state</button>
+        <button
+            class="k-button"
+            *ngIf="savedStateExists"
+            (click)="gridSettings = mapGridSettings(persistingService.get('gridSettings'))">Load saved state</button>
+            -->
         <kendo-grid
           #grid
           [kendoGridBinding]="item.OutEdges"
